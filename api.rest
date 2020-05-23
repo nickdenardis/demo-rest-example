@@ -1,0 +1,16 @@
+GET http://localhost:8000/recipes
+
+###
+POST http://localhost:8000/recipes
+Content-Type: application/json
+
+{
+    "title": "Cook with Nick",
+    "desc": "Yummy!",
+    "ingredients": [
+        "🎉", "👍"
+    ]
+}
+
+###
+GET http://localhost:8000/recipe/5ec907b300223dcc0078e781
