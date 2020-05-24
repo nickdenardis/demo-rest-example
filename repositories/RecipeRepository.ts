@@ -11,6 +11,11 @@ class RecipeRepository {
     return recipes;
   }
 
+  async get(id: string) {
+    const recipe = await this.recipeCollection.findOne({_id: {"$oid": id}});
+    return recipe;
+  }
+
   async insertOne(recipe: IRecipe) {
     const { $oid } = await this.recipeCollection.insertOne(recipe);
     return $oid;

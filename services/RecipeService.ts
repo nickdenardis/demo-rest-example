@@ -2,17 +2,21 @@ import RecipeRepository from "../repositories/RecipeRepository.ts";
 import IRecipe from "../entities/iRecipe.ts";
 
 class RecipeService {
-    constructor() {}
+  constructor() {}
 
-    readonly recipeRepository = new RecipeRepository();
+  readonly recipeRepository = new RecipeRepository();
 
-    getRecipes = async () => {
-        return await this.recipeRepository.find();
-    }
+  getRecipes = async () => {
+    return await this.recipeRepository.find();
+  };
 
-    createRecipe = async (recipe: IRecipe) => {
-        return await this.recipeRepository.insertOne(recipe);
-    }
+  createRecipe = async (recipe: IRecipe) => {
+    return await this.recipeRepository.insertOne(recipe);
+  };
+
+  getRecipe = async (id: string) => {
+    return await this.recipeRepository.get(id);
+  };
 }
 
 export default RecipeService;

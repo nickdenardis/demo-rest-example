@@ -1,10 +1,33 @@
 import RecipeService from "../services/RecipeService.ts";
 import { RouterContext } from "https://deno.land/x/oak/mod.ts";
+import IRecipe from "../entities/iRecipe.ts";
 
 const recipeService = new RecipeService();
 
 export const getRecipes = async (context: RouterContext) => {
   context.response.body = await recipeService.getRecipes();
+};
+
+export const getRecipe = async (context: RouterContext) => {
+  const { response } = context;
+
+  let id: string = context.params.id ?? "";
+
+  try {
+    const data: IRecipe = await recipeService.getRecipe(id);
+
+    if (data) {
+      response.status = 200;
+      response.body = data;
+    } else {
+      response.status = 404;
+      response.body = { msg: "Recipe not found" };
+    }
+  } catch (e) {
+    response.status = 500;
+    response.body = { msg: "Internal server error" };
+    return;
+  }
 };
 
 export const createRecipe = async (context: RouterContext) => {
@@ -18,9 +41,9 @@ export const createRecipe = async (context: RouterContext) => {
 
   const { value: {title, description, ingredients} } = await request.body();
 
-  const recipeId = await recipeService.createRecipe({title, description, ingredients});
+  const recipeId = await recipeService.createRecipe(
+    { title, description, ingredients },
+  );
 
   response.body = { msg: "Recipe created", recipeId };
 };
-
-//   context.params.id
