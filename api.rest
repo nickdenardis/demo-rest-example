@@ -16,4 +16,4 @@ Content-Type: application/json
 GET http://localhost:8000/recipes/5ec907b300223dcc0078e781
 
 ###
-GET http://localhost:8000/recipes/123456
+GET http://localhost:8000/recipes/5ec907b300223dcc0078e782

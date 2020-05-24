@@ -10,10 +10,10 @@ export const getRecipes = async (context: RouterContext) => {
 
 export const getRecipe = async (context: RouterContext) => {
   const { response } = context;
-
-  let id: string = context.params.id ?? "";
-
+  
   try {
+    let id: string = context.params.id ?? "";
+
     const data: IRecipe = await recipeService.getRecipe(id);
 
     if (data) {
