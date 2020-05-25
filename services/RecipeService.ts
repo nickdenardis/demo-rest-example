@@ -17,6 +17,10 @@ class RecipeService {
   getRecipe = async (id: string) => {
     return await this.recipeRepository.get(id);
   };
+
+  updateRecipe = async (id: string, values: object) => {
+    return await this.recipeRepository.updateOne(id, values);
+  };
 }
 
 export default RecipeService;

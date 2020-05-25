@@ -20,6 +20,15 @@ class RecipeRepository {
     const { $oid } = await this.recipeCollection.insertOne(recipe);
     return $oid;
   }
+
+  async updateOne(id: string, values: object) {
+    const response = await this.recipeCollection.updateOne(
+      { _id: {"$oid": id} },
+      { $set: values }
+    );
+
+    return response;
+  }
 }
 
 export default RecipeRepository;

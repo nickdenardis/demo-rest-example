@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
     "title": "Grilling with Nick",
-    "desc": "Meat!",
+    "description": "Meat!",
     "ingredients": [
         "🐄", "🐓"
     ]
@@ -17,3 +17,19 @@ GET http://localhost:8000/recipes/5ec907b300223dcc0078e781
 
 ###
 GET http://localhost:8000/recipes/5ec907b300223dcc0078e782
+
+### 
+PATCH http://localhost:8000/recipes/5ec907b300223dcc0078e781
+Content-Type: application/json
+
+{
+    "desc": "Veggies!!!1"
+}
+
+###
+PATCH http://localhost:8000/recipes/5ec907b300223dcc0078e782
+Content-Type: application/json
+
+{
+    "desc": "Invalid ID."
+}
