@@ -29,6 +29,13 @@ class RecipeRepository {
 
     return response;
   }
+  
+  async deleteOne(id: string) {
+    const $count = await this.recipeCollection.deleteOne(
+      { _id: {"$oid": id} },
+    );
+    return ($count === 1);
+  }
 }
 
 export default RecipeRepository;

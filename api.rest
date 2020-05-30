@@ -33,3 +33,9 @@ Content-Type: application/json
 {
     "desc": "Invalid ID."
 }
+
+###
+DELETE http://localhost:8000/recipes/5ec907b300223dcc0078e781
+
+###
+DELETE http://localhost:8000/recipes/5ec907b300223dcc0078e782

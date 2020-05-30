@@ -76,3 +76,31 @@ export const updateRecipe = async (context: RouterContext) => {
     return;
   }
 };
+
+export const deleteRecipe = async (context: RouterContext) => {
+  const { request, response } = context;
+
+  try {
+    let id: string = context.params.id ?? "";
+
+    const is_deleted: boolean = await recipeService.deleteRecipe(id);
+
+    if (is_deleted) {
+      response.status = 200;
+      response.body = {
+        msg: "Recipe deleted",
+        id: id,
+      };
+    } else {
+      response.status = 400;
+      response.body = {
+        msg: "Cannot find recipe",
+        id: id,
+      };
+    }
+  } catch (e) {
+    response.status = 500;
+    response.body = { msg: "Internal server error" };
+    return;
+  }
+};

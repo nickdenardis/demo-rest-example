@@ -21,6 +21,10 @@ class RecipeService {
   updateRecipe = async (id: string, values: object) => {
     return await this.recipeRepository.updateOne(id, values);
   };
+
+  deleteRecipe = async (id: string) => {
+    return await this.recipeRepository.deleteOne(id);
+  };
 }
 
 export default RecipeService;
