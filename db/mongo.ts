@@ -5,6 +5,6 @@ const env = config();
 const client = new MongoClient();
 client.connectWithUri(env.MONGO_DB);
 
-const db = client.database("example");
+const db = client.database(env.DB_NAME);
 
 export default db;
